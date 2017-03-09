@@ -4,6 +4,8 @@
 - [ ] finna út hvaða service við ætlum að nota og fjölda
 
 ####2017-03-10
+Skype samtal eftir klukkan 20:00
+
 #####@Maciuska
 - Er að vinna frá 10:00 - 19:30
 
@@ -12,6 +14,8 @@
 - [ ] setja upp code coverage
 
 ####2017-03-11
+Skype samtal eftir klukkan 20:00
+
 #####@Maciuska
 - Er að vinna frá 10:00 - 18:00
 
