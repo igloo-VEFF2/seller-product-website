@@ -14,8 +14,8 @@ The website should therefore have the following screens:
 
 **Note:** the design of two of those screens should be similar to these:
 
-    Sellers list: https://dl.dropboxusercontent.com/u/368343/2016-WEPO/V07/sellers.png
-    Seller details page: https://dl.dropboxusercontent.com/u/368343/2016-WEPO/V07/details.png
+- Sellers list: https://dl.dropboxusercontent.com/u/368343/2016-WEPO/V07/sellers.png
+- Seller details page: https://dl.dropboxusercontent.com/u/368343/2016-WEPO/V07/details.png
 
 The project should be unit tested, code coverage determines the grade for that part.
 
@@ -46,8 +46,8 @@ The following APIs are available:
     PUT - /api/sellers/:id
     Updates seller information.
 
-PUT - /api/sellers/:id/products/:prodId
-Updates product information
+    PUT - /api/sellers/:id/products/:prodId
+    Updates product information
  
 You should use angular-cli to generate the initial project.
 
