@@ -14,8 +14,8 @@ The website should therefore have the following screens:
 
 **Note:** the design of two of those screens should be similar to these:
 
-Sellers list: https://dl.dropboxusercontent.com/u/368343/2016-WEPO/V07/sellers.png
-Seller details page: https://dl.dropboxusercontent.com/u/368343/2016-WEPO/V07/details.png
+    Sellers list: https://dl.dropboxusercontent.com/u/368343/2016-WEPO/V07/sellers.png
+    Seller details page: https://dl.dropboxusercontent.com/u/368343/2016-WEPO/V07/details.png
 
 The project should be unit tested, code coverage determines the grade for that part.
 
@@ -23,31 +23,31 @@ A REST API will be provided which will provide the data (see attachment).
 
 To start it, unzip the attachment, go into the folder, and run the following commands:
 
-npm install
-node index.js
+    npm install
+    node index.js
 
 The following APIs are available:
 
-> GET - /api/sellers
-> Returns a list of sellers
+    GET - /api/sellers
+    Returns a list of sellers
 
-> POST - /api/sellers
-> Adds a new seller to the service. Note: the "name" property is required, "category" and "imagePath" should be provided as well, but are optional.
+    POST - /api/sellers
+    Adds a new seller to the service. Note: the "name" property is required, "category" and "imagePath" should be provided as well, but are optional.
 
-> GET - /api/sellers/:id
-> Returns a single seller by id. Returns 404 if no such seller is found.
+    GET - /api/sellers/:id
+    Returns a single seller by id. Returns 404 if no such seller is found.
 
-> GET  - /api/sellers/:id/products
-> Returns all products from a given seller. Returns 404 if the seller is not found.
+    GET  - /api/sellers/:id/products
+    Returns all products from a given seller. Returns 404 if the seller is not found.
 
-> POST - /api/sellers/:id/products
-> Adds a new product to the given seller. Returns 404 if no seller with the given id is found. Note that the name of the product is required.
+    POST - /api/sellers/:id/products
+    Adds a new product to the given seller. Returns 404 if no seller with the given id is found. Note that the name of the product is required.
 
-> PUT - /api/sellers/:id
-> Updates seller information.
+    PUT - /api/sellers/:id
+    Updates seller information.
 
-> PUT - /api/sellers/:id/products/:prodId
-> Updates product information
+PUT - /api/sellers/:id/products/:prodId
+Updates product information
  
 You should use angular-cli to generate the initial project.
 
