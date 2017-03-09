@@ -8,6 +8,8 @@
 - Er að vinna frá 10:00 - 19:30
 
 #####@Spekingur
+- [ ] setja upp unit tests á components og services
+- [ ] setja upp code coverage
 
 ####2017-03-11
 #####@Maciuska
