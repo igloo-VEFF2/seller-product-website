@@ -14,6 +14,15 @@ export interface SellerDetails {
 
 }
 
+export interface Product {
+  id: number;
+  name: string;
+  price: number;
+  quantitySold: number;
+  quantityInStock: number;
+  imagePath: string;
+}
+
 @Injectable()
 export class SellersService {
 
@@ -24,6 +33,7 @@ export class SellersService {
     .map(response => {
       return <Seller[]> response.json();
     });
+    //TODO: add response for not found and server not up
   }
 
   getSellerById(id: number): Observable<Seller> {
@@ -31,6 +41,20 @@ export class SellersService {
     .map(response => {
       return <Seller> response.json();
     });
+    //TODO: add response for (ID) not found and server not up
   }
 
+  getProductsBySellerId(id: number): Observable<Product[]> {
+    return this.http.get(`http://localhost:5000/api/sellers/${id}/products`)
+    .map(response =>{
+      return <Product[]> response.json();
+    });
+    //TODO: add response for (ID) not found and server not up
+  }
+
+  //TODO: finish functions below
+  //addNewSeller()
+  //addNewProduct(id: number)
+  //updateSellerDetails(id: number)
+  //updateProductDetails(sellerID: number, productID: number)
 }
