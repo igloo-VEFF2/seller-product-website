@@ -18,10 +18,12 @@ export class SellerComponent implements OnInit {
   private category: string;
   private imagePath: string;
   private productList: Product[];
-  private seller: Seller;
+  private topTen: Product[];
 
   ngOnInit() {
     this.sellerID = this.route.snapshot.params['id'];
+    let isEmpty = false;
+
     this.service.getSellerById(this.sellerID).subscribe(info => {
       this.name = info.name;
       this.category = info.category;
@@ -29,7 +31,12 @@ export class SellerComponent implements OnInit {
     });
 
     this.service.getProductsBySellerId(this.sellerID).subscribe(products => {
-      this.productList = products;
+      if (products.length === 0) {
+        isEmpty = true;
+      }
+      else {
+        this.productList = products;
+      }
     });
   }
 
