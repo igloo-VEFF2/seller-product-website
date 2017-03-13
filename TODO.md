@@ -25,3 +25,15 @@ Skype samtal eftir klukkan 20:00
 #####@Maciuska
 
 #####@Spekingur
+
+####2017-03-13
+Uppsetning á öllum síðum, fá virknina í gang
+#####@Maciuska
+
+#####@Spekingur
+
+####2017-03-14
+Klára að setja upp allar prófanir og fara yfir útlit
+#####@Maciuska
+
+#####@Spekingur
