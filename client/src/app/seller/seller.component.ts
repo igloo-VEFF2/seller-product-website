@@ -30,7 +30,14 @@ export class SellerComponent implements OnInit {
 
     this.service.getProductsBySellerId(this.sellerID).subscribe(products => {
       this.productList = products;
-    })
+    });
   }
 
+  editSellerInfo() {
+    console.log("editing seller");
+  }
+
+  addNewProduct() {
+    console.log("adding new product");
+  }
 }
