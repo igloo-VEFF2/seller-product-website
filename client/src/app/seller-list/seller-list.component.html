@@ -4,7 +4,7 @@
 
 <ul>
   <li *ngFor="let s of sellers">
-    <a [routerLink]="['/sellers', s]">{{s.name}}</a>
+    <a [routerLink]="['/sellers', s.id]">{{s.name}}</a>
   </li>
 </ul>
 
