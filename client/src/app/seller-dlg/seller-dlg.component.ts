@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+
+export class Seller {
+  name: string;
+  category: string;
+  imagePath: string;
+}
 
 @Component({
   selector: 'app-seller-dlg',
@@ -7,11 +14,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SellerDlgComponent implements OnInit {
 
-  sellerName: string;
+  seller: Seller;
 
-  constructor() { }
+  constructor(public activeModal: NgbActiveModal) { }
 
   ngOnInit() {
   }
 
+  onCancel() {
+    this.activeModal.dismiss();
+  }
+
+  onOk() {
+    this.activeModal.close(this.seller);
+  }
 }

@@ -1,3 +1,15 @@
-<p>
-  seller-dlg works!
-</p>
+<div class="modal-header">
+  <h4 class="modal-title">Creating new seler</h4>
+  <button type="button" class="close" aria-label="Close" (click)="onCancel()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  Sellers name: <input [(ngModel)]="seller.name" autofocus /> <br>
+  Sellers category: <input [(ngModel)]="seller.category" /> <br>
+  Sellers image path: <input [(ngModel)]="seller.imagePath" />
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="onCancel()">Close</button>
+  <button type="button" class="btn btn-success" (click)="onOk()">OK</button>
+</div>

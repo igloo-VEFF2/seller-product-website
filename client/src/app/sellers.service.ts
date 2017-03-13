@@ -60,6 +60,7 @@ export class SellersService {
     return this.http.post('http://localhost:5000/api/sellers', newSeller)
     .map(response => {
       console.log(response);
+      console.log("Seller added!");
       return <Seller> response.json(); //this is very probably wrong
     });
   }

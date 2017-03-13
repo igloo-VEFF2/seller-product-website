@@ -23,10 +23,16 @@ export class SellerListComponent implements OnInit {
 
   addSeller() {
     var modalInstance = this.modalService.open(SellerDlgComponent);
-    modalInstance.componentInstance.sellerName = "Test";
+    modalInstance.componentInstance.seller = {
+      name: "Test",
+      category: "Random",
+      imagePath: "http://example.com",
+    };
     modalInstance.result.then(obj => {
       console.log("Dialog was closed using OK");
       console.log(obj);
+      this.service.addNewSeller(obj);
+
     }).catch(err => {
       console.log("Dialog was cancelled");
       console.log(err);
