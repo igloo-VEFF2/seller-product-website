@@ -30,7 +30,7 @@ import { ProductComponent } from './product/product.component';
       path: 'sellers',
       component: SellerListComponent
     },  {
-      path: 'seller/:id',
+      path: 'sellers/:id',
       component: SellerComponent
     }])
   ],
