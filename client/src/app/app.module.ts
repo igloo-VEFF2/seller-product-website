@@ -11,6 +11,7 @@ import { SellerListComponent } from './seller-list/seller-list.component';
 import { SellerComponent } from './seller/seller.component';
 import { ProductComponent } from './product/product.component';
 import { SellerDlgComponent } from './seller-dlg/seller-dlg.component';
+import { ProductDlgComponent } from './product-dlg/product-dlg.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { SellerDlgComponent } from './seller-dlg/seller-dlg.component';
     SellerListComponent,
     SellerComponent,
     ProductComponent,
-    SellerDlgComponent
+    SellerDlgComponent,
+    ProductDlgComponent
   ],
   imports: [
     BrowserModule,
