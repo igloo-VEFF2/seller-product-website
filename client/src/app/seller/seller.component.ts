@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SellersService, Seller, SellerDetails, Product } from '../sellers.service';
+import { SellersService, Seller, Product } from '../sellers.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -18,12 +18,15 @@ export class SellerComponent implements OnInit {
   private category: string;
   private imagePath: string;
   private productList: Product[];
-  private sellerInfo: SellerDetails;
+  private seller: Seller;
 
   ngOnInit() {
     this.sellerID = this.route.snapshot.params['id'];
     this.service.getSellerById(this.sellerID).subscribe(info => {
-      console.log("hello");
+      this.name = info.name;
+      this.category = info.category;
+      this.imagePath = info.imagePath;
+      console.log(info);
     });
   }
 
