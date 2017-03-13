@@ -1,5 +1,5 @@
 <div>
-  <img id='image' src="{{imagePath}}">
+  <img id="image" src="{{imagePath}}">
 </div>
 <div>
   {{name}}
@@ -7,3 +7,9 @@
 <div>
   {{category}}
 </div>
+
+<ul>
+  <li *ngFor="let product of productList">
+    {{product.name}}
+  </li>
+</ul>
