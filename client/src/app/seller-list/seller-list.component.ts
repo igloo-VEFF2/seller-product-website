@@ -14,7 +14,7 @@ export class SellerListComponent implements OnInit {
 
   ngOnInit() {
       this.service.getSellers().subscribe(result => {
-      this.sellers = result;
+        this.sellers = result;
   });
 }
 }

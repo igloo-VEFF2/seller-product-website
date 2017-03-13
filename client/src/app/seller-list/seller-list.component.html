@@ -4,15 +4,19 @@
 
 <ul>
   <li *ngFor="let s of sellers">
-    {{s.name}}
+    <a [routerLink]="['/sellers', s]">{{s.name}}</a>
   </li>
 </ul>
 
-<div *ngIf="seller">
-  <h2> {{seller.name}}</h2>
 
-  <img src="{{seller.imagePath}}" alt="Image of the seller" />
-</div>
+
+<!--
+<ul>
+  <li *ngFor="let s of sellers">
+    {{s.name}}
+  </li>
+</ul>
+-->
 
 <div class="container">
   <div class="row">
