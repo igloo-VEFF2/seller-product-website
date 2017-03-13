@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SellersService, Seller} from '../sellers.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { SellerDlgComponent } from "../seller-dlg/seller-dlg.component";
 
 @Component({
   selector: 'app-seller-list',
@@ -8,7 +10,8 @@ import { SellersService, Seller} from '../sellers.service';
 })
 export class SellerListComponent implements OnInit {
 
-  constructor(private service: SellersService) { }
+  constructor(private service: SellersService,
+    private modalService: NgbModal) { }
 
   private sellers: Seller[];
 
@@ -16,5 +19,18 @@ export class SellerListComponent implements OnInit {
       this.service.getSellers().subscribe(result => {
         this.sellers = result;
   });
-}
+  }
+
+  addSeller() {
+    var modalInstance = this.modalService.open(SellerDlgComponent);
+    modalInstance.componentInstance.sellerName = "Test";
+    modalInstance.result.then(obj => {
+      console.log("Dialog was closed using OK");
+      console.log(obj);
+    }).catch(err => {
+      console.log("Dialog was cancelled");
+      console.log(err);
+    });
+  }
+
 }
