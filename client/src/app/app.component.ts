@@ -15,19 +15,13 @@ export class AppComponent implements OnInit{
   constructor(private service: SellersService) {}
 
   ngOnInit() {
-
+/*
     this.service.getSellerById(2).subscribe((result) => {
       this.seller = result;
     }, (err) => {
       //TODO
       console.log("There was a failure");
-    });
-
-    /*
-    this.service.getSellers().subscribe(result => {
-      this.sellers = result;
-    });
-    */
+    });*/
   }
 
 }
