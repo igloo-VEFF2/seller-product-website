@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/rx';
 
@@ -55,14 +55,23 @@ export class SellersService {
 
   //TODO: check if these functions do the correct thing
   //console.log checks added to see data
-  addNewSeller(newSeller: Seller): Observable<Seller> {
+  addNewSeller(newSeller: Object) {
     console.log(newSeller);
-    return this.http.post('http://localhost:5000/api/sellers', newSeller)
+    let headers = new Headers({'Content-Type': 'application/json'});
+    let options = new RequestOptions({ headers: headers});
+
+    this.http.post('http://localhost:5000/api/sellers', newSeller, options)
     .map(response => {
       console.log(response);
       console.log("Seller added!");
-      return <Seller> response.json(); //this is very probably wrong
-    });
+      //return <Seller> response.json(); //this is very probably wrong
+      return response.json();
+    })
+    .catch(err => {
+      console.log(err);
+      return Observable.throw(err.json().error || 'Server error')
+    })
+    .subscribe();
   }
   
   addNewProduct(id: number, newProduct: Product): Observable<Product> {
