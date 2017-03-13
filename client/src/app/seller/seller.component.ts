@@ -26,8 +26,11 @@ export class SellerComponent implements OnInit {
       this.name = info.name;
       this.category = info.category;
       this.imagePath = info.imagePath;
-      console.log(info);
     });
+
+    this.service.getProductsBySellerId(this.sellerID).subscribe(products => {
+      this.productList = products;
+    })
   }
 
 }
