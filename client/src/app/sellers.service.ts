@@ -11,7 +11,8 @@ export interface Seller {
 }
 
 export interface SellerDetails {
-
+  seller: Seller;
+  products: Product[];
 }
 
 export interface Product {
