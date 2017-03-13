@@ -11,7 +11,11 @@
 <button (click)="editSellerInfo()">Edit info</button>
 <button (click)="addNewProduct()">Add new product</button>
 
-<ul>
+<ul *ngIf="isEmpty">
+  <li>No products yet</li>
+</ul>
+
+<ul *ngIf="!isEmpty">
   <li *ngFor="let product of productList">
     {{product.name}}
   </li>
