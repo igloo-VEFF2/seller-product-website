@@ -8,6 +8,9 @@
   {{category}}
 </div>
 
+<button (click)="editSellerInfo()">Edit info</button>
+<button (click)="addNewProduct()">Add new product</button>
+
 <ul>
   <li *ngFor="let product of productList">
     {{product.name}}
