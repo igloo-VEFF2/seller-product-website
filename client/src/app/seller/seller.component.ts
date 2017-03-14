@@ -141,9 +141,9 @@ export class SellerComponent implements OnInit {
       this.toastrService.success('Product info updated successfully!', 'Success!');
       console.log(obj);
       this.service.updateProductDetails(this.sellerID, currentProduct.id, obj).subscribe(result => {
-        currentProduct.name = result.name;
-        currentProduct.price = result.price;
-        currentProduct.imagePath = result.imagePath;
+        this.service.getProductsBySellerId(this.sellerID).subscribe(result => {
+          this.productList = result;
+        });
       });
     })
     .catch(err => {
