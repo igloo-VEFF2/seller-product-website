@@ -41,6 +41,7 @@ export class SellerComponent implements OnInit {
       }
       else {
         this.productList = products;
+        //this.topTen = products.sort()
       }
     });
   }
@@ -82,6 +83,11 @@ export class SellerComponent implements OnInit {
 
   editProduct() {
     console.log('editing product');
+
+    this.product = this.route.snapshot.params['id'];
+
+    console.log(this.product);
+
     let editProductInstance = this.modalService.open(ProductDlgComponent);
 
     editProductInstance.componentInstance.product = {
@@ -90,7 +96,7 @@ export class SellerComponent implements OnInit {
       quantitySold: this.product.quantitySold,
       quantityInStock: this.product.quantityInStock,
       imagePath: this.product.imagePath
-    }
+    };
 
     editProductInstance.result.then(obj => {
       console.log(obj);
