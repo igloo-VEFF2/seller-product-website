@@ -1,12 +1,12 @@
 ### Þarf að uppfylla eftirfarandi skilyrði
-- [ ] (5%) List individuals
-- [ ] (10%) Add/Edit individuals
-- [ ] (10%) Show details about a given individual
+- [x] (5%) List individuals
+- [x] (10%) Add/Edit individuals
+- [x] (10%) Show details about a given individual
 - [ ] (10%) All Products tab
 - [ ] (5%) Top 10 tab
-- [ ] (10%) Add/Edit Product
-- [ ] (10%) All input validated
-- [ ] (5%) Toastr feedback after add/edit
+- [x] (10%) Add/Edit Product
+- [x] (10%) All input validated
+- [x] (5%) Toastr feedback after add/edit
 - [ ] (5%) Responsive layout
 - [ ] (30%) Unit tests for all code
 - [ ] (10%) Coolness bonus
@@ -54,18 +54,19 @@ Vantar einnig að laga editProduct í sellerComponent
 Klára að setja upp allar prófanir og fara yfir útlit
 
 ##### @Maciuska
-- [ ] setja upp toastr feedback fyrir add og edit
-- [ ] setja upp validation fyrir allt input
+- [x] setja upp toastr feedback fyrir add og edit
+- [x] setja upp validation fyrir allt input
 
 ###### Gert í dag
 
 ##### @Spekingur
-- [ ] Klára addProduct í sellerService og sellerComponent
-- [ ] Klára editProduct í sellerService og sellerComponent
+- [x] Klára addProduct í sellerService og sellerComponent
+- [x] Klára editProduct í sellerService og sellerComponent
 
 ###### Gert í dag
 - lagaði þannig að öll föll í service sem tala við server sé observable og virka
-- kláraði addproduct
+- kláraði addProduct
 - lét allar upplýsingar uppfærast strax um leið og búið er að bæta við eða edita
+- kláraði editProduct
 
 ##### Niðurstaða dagsins
