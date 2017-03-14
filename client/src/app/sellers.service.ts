@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { ToastrService } from 'ngx-toastr';
 import 'rxjs/rx';
 
 export interface Seller {
@@ -27,7 +28,8 @@ export interface Product {
 @Injectable()
 export class SellersService {
 
-  constructor(private http: Http) { }
+  constructor(private http: Http,
+  private toastrService: ToastrService) { }
 
   getSellers(): Observable<Seller[]> {
     return this.http.get('http://localhost:5000/api/sellers')
@@ -41,16 +43,24 @@ export class SellersService {
     return this.http.get(`http://localhost:5000/api/sellers/${id}`)
     .map(response => {
       return <Seller> response.json();
+    })
+    .catch(err => {
+      console.log(err);
+      this.toastrService.error("Error 404!", "Seller not found!");
+      return Observable.throw(err.json().error || 'Server error');
     });
-    //TODO: add response for (ID) not found and server not up
   }
 
   getProductsBySellerId(id: number): Observable<Product[]> {
     return this.http.get(`http://localhost:5000/api/sellers/${id}/products`)
     .map(response => {
       return <Product[]> response.json();
+    })
+    .catch(err => {
+      console.log(err);
+      this.toastrService.error("Error 404!", "Seller not found!");
+      return Observable.throw(err.json().error || 'Server error');
     });
-    //TODO: add response for (ID) not found and server not up
   }
 
   //TODO: check if these functions do the correct thing
@@ -87,6 +97,7 @@ export class SellersService {
     })
     .catch(err => {
       console.log(err);
+       this.toastrService.error("Error 404!", "Seller not found!");
       return Observable.throw(err.json().error);
     });
   }

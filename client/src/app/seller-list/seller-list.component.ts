@@ -40,7 +40,6 @@ export class SellerListComponent implements OnInit {
       });
     })
     .catch(err => {
-      this.toastrService.error('There was an error while adding a new individual!', 'Failure!');
       console.log(err);
     });
   }
