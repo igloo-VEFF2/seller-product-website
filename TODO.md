@@ -70,5 +70,7 @@ Klára að setja upp allar prófanir og fara yfir útlit
 - kláraði editProduct
 - búinn að setja upp ngb-alert ef seller er ekki með neinar vörur
 - setti upp tabs en vantar að geta sýnt content-ið inn í þeim
+- tabs komið
+- product cards komið, mögulega þarf resize á það
 
 ##### Niðurstaða dagsins
