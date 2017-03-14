@@ -42,6 +42,8 @@ export class SellerComponent implements OnInit {
       }
       else {
         this.productList = products;
+        console.log(products.length);
+        console.log(this.productList.length);
         //this.topTen = products.sort()
       }
     });
@@ -90,7 +92,9 @@ export class SellerComponent implements OnInit {
 
     newProductInstance.result.then(obj => {
       console.log(obj);
-      this.service.addNewProduct(this.sellerID, obj);
+      this.service.addNewProduct(this.sellerID, obj).subscribe(result => {
+        this.product = result;
+      })
     })
     .catch(err => {
       console.log(err);
