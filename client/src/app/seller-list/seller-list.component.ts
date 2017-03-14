@@ -14,6 +14,7 @@ export class SellerListComponent implements OnInit {
     private modalService: NgbModal) { }
 
   private sellers: Seller[];
+  private seller: Seller;
 
   ngOnInit() {
     this.service.getSellers().subscribe(result => {
@@ -28,7 +29,12 @@ export class SellerListComponent implements OnInit {
     modalInstance.result.then(obj => {
       console.log("Dialog was closed using OK");
       console.log(obj);
-      this.service.addNewSeller(obj);
+      this.service.addNewSeller(obj).subscribe(result => {
+        //this.seller = result;
+        this.service.getSellers().subscribe(result => {
+          this.sellers = result;
+        });
+      });
     })
     .catch(err => {
       console.log("Dialog was cancelled");
