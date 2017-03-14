@@ -8,6 +8,8 @@ import { SellersService, Product } from '../sellers.service';
 })
 export class ProductComponent implements OnInit {
 
+  product: Product;
+  
   constructor() { }
 
   ngOnInit() {
