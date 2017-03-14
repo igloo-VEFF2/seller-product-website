@@ -138,7 +138,7 @@ export class SellerComponent implements OnInit {
       imagePath: this.product.imagePath
     };
 
-    console.log(editProductInstance.componentInstance.product);
+    console.log(editProductInstance.componentInstance.sendProduct);
 
 
     editProductInstance.result.then(obj => {
