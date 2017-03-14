@@ -94,6 +94,7 @@ export class SellerComponent implements OnInit {
     newProductInstance.componentInstance.product = { };
 
     newProductInstance.componentInstance.title = 'Adding new product';
+    newProductInstance.componentInstance.editing = false;
 
     newProductInstance.result.then(obj => {
       console.log(obj);
@@ -120,6 +121,7 @@ export class SellerComponent implements OnInit {
     let editProductInstance = this.modalService.open(ProductDlgComponent);
 
     editProductInstance.componentInstance.title = 'Editing product';
+    editProductInstance.componentInstance.editing = true;
 
     editProductInstance.componentInstance.product = {
       name: this.product.name,

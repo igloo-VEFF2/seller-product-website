@@ -22,6 +22,7 @@ export class ProductDlgComponent implements OnInit {
 
   product: Product;
   title: string;
+  editing: boolean;
 
   /*constructor(public activeModal: NgbActiveModal,
     private product: Product) { }*/
