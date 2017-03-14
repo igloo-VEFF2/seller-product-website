@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
 
 export class Seller {
   name: string;
@@ -17,7 +18,8 @@ export class SellerDlgComponent implements OnInit {
   seller: Seller;
   title: string;
 
-  constructor(public activeModal: NgbActiveModal) { }
+  constructor(public activeModal: NgbActiveModal,
+  private toastrService: ToastrService) { }
 
   ngOnInit() {
   }
@@ -27,6 +29,13 @@ export class SellerDlgComponent implements OnInit {
   }
 
   onOk() {
-    this.activeModal.close(this.seller);
+    if(this.seller.name.length < 1)
+    {
+      this.toastrService.info("Name field is required!", "Info!");
+    }
+    else
+    {
+      this.activeModal.close(this.seller);
+    }
   }
 }

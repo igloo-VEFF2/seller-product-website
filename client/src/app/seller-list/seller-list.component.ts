@@ -27,7 +27,9 @@ export class SellerListComponent implements OnInit {
   addSeller() {
     var modalInstance = this.modalService.open(SellerDlgComponent);
     modalInstance.componentInstance.title = "Adding new seller";
-    modalInstance.componentInstance.seller = { };
+    modalInstance.componentInstance.seller = { 
+      name: ""
+    };
     modalInstance.result.then(obj => {
       this.toastrService.success('Seller succesfully added!', 'Success!');
       this.service.addNewSeller(obj).subscribe(result => {
