@@ -1,13 +1,13 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-//import { Product } from '../sellers.service'; //gave warnings about not finding Product in sellers.service
+import { Product } from '../sellers.service'; //gave warnings about not finding Product in sellers.service
 
-export class Product {
+/*export class Product {
   name: string;
   price: number;
   quantityInStock: number;
   imagePath: string;
-}
+}*/
 
 @Component({
   selector: 'app-product-dlg',
