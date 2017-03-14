@@ -2,13 +2,23 @@
 
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { Router } from '@angular/router'
+import { DebugElement } from '@angular/core'
 
 describe('AppComponent', () => {
+
+  let mockRouter = {
+    navigate: jasmine.createSpy('navigate')
+  };
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent
       ],
+      providers: [
+        { provide: Router, useValue: mockRouter }
+      ]
     });
     TestBed.compileComponents();
   });
