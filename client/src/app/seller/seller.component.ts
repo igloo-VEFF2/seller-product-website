@@ -51,6 +51,7 @@ export class SellerComponent implements OnInit {
     let editSellerInstance = this.modalService.open(SellerDlgComponent);
 
     editSellerInstance.componentInstance.seller = {
+      id: this.sellerID,
       name: this.name,
       category: this.category,
       imagePath: this.imagePath
