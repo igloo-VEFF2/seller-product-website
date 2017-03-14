@@ -1,19 +1,36 @@
-<h1>
-  List of sellers
-</h1>
+<body>
+  <header>
+    <h3>
+      List of sellers:
+    </h3>
+  </header>
 
-<ul>
-  <li *ngFor="let s of sellers">
-    <a [routerLink]="['/sellers', s.id]">{{s.name}}</a>
-  </li>
-</ul>
+<content>
+  <section>
+  <ul class="list-group">
+    <li class="list-group-item justify-content-between" *ngFor="let s of sellers">
+      <a [routerLink]="['/sellers', s.id]">{{s.name}} </a>
+      <span class="badge badge-default badge-pill">{{s.category}}</span>
+    </li>
+  </ul>
+  </section>
+</content>
 
-<button class="btn-primary" (click)="addSeller()">Add a new seller</button>
+<footer> 
+  <button class="btn btn-info btn-block" (click)="addSeller()">Add a new seller</button>
+</footer>
+</body>
 
-<template ngbModalContainer></template>
-
+<!--
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-3 col-lg-2">
   </div>
 </div>
+-->
+
+
+
+
+
+<template ngbModalContainer></template>
