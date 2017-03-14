@@ -119,16 +119,13 @@ export class SellerComponent implements OnInit {
 
   editProduct(currentProduct: Product) {
     console.log('editing product');
-    console.log(this.sellerID);
-    console.log(currentProduct.id);
-    console.log(currentProduct);
 
     let editProductInstance = this.modalService.open(ProductDlgComponent);
 
     editProductInstance.componentInstance.title = 'Editing product';
     editProductInstance.componentInstance.notEditing = false;
 
-    editProductInstance.componentInstance.sendProduct = {
+    editProductInstance.componentInstance.product = {
       id: this.sellerID,
       prodId: currentProduct.id,
       name: currentProduct.name,
@@ -136,21 +133,18 @@ export class SellerComponent implements OnInit {
       imagePath: currentProduct.imagePath
     };
 
-    console.log(editProductInstance.componentInstance.sendProduct);
-
-
-    /*editProductInstance.result.then(obj => {
+    editProductInstance.result.then(obj => {
       this.toastrService.success('Product info updated successfully!', 'Success!');
       console.log(obj);
-      this.service.updateProductDetails(this.sellerID, product.id, obj).subscribe(result => {
-        product.name = result.name;
-        product.price = result.price;
-        product.imagePath = result.imagePath;
+      this.service.updateProductDetails(this.sellerID, currentProduct.id, obj).subscribe(result => {
+        currentProduct.name = result.name;
+        currentProduct.price = result.price;
+        currentProduct.imagePath = result.imagePath;
       });
     })
     .catch(err => {
       console.log(err);
       this.toastrService.error('There was an error while trying to update a product!', 'Failure!');
-    });*/
+    });
   }
 }
