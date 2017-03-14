@@ -117,13 +117,11 @@ export class SellerComponent implements OnInit {
     });
   }
 
-  editProduct() {
+  editProduct(currentProduct: Product) {
     console.log('editing product');
-
-    let prodId = this.route.snapshot.params['product.prodId'];
-    console.log(prodId);
-
-    console.log(this.product);
+    console.log(this.sellerID);
+    console.log(currentProduct.id);
+    console.log(currentProduct);
 
     let editProductInstance = this.modalService.open(ProductDlgComponent);
 
@@ -132,27 +130,27 @@ export class SellerComponent implements OnInit {
 
     editProductInstance.componentInstance.sendProduct = {
       id: this.sellerID,
-      prodId: this.product.id,
-      name: this.product.name,
-      price: this.product.price,
-      imagePath: this.product.imagePath
+      prodId: currentProduct.id,
+      name: currentProduct.name,
+      price: currentProduct.price,
+      imagePath: currentProduct.imagePath
     };
 
     console.log(editProductInstance.componentInstance.sendProduct);
 
 
-    editProductInstance.result.then(obj => {
+    /*editProductInstance.result.then(obj => {
       this.toastrService.success('Product info updated successfully!', 'Success!');
       console.log(obj);
-      this.service.updateProductDetails(this.sellerID, this.product.id, obj).subscribe(result => {
-        this.product.name = result.name;
-        this.product.price = result.price;
-        this.product.imagePath = result.imagePath;
+      this.service.updateProductDetails(this.sellerID, product.id, obj).subscribe(result => {
+        product.name = result.name;
+        product.price = result.price;
+        product.imagePath = result.imagePath;
       });
     })
     .catch(err => {
       console.log(err);
       this.toastrService.error('There was an error while trying to update a product!', 'Failure!');
-    })
+    });*/
   }
 }

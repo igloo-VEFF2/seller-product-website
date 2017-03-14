@@ -19,7 +19,7 @@
 </ul>
 
 <ul *ngIf="!isEmpty">
-  <li *ngFor="let product of productList" (click)="editProduct()">
+  <li *ngFor="let product of productList" (click)="editProduct(product)">
     {{product.name}}
   </li>
 </ul>
