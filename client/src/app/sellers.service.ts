@@ -78,13 +78,17 @@ export class SellersService {
     console.log(id);
     console.log(newProduct);
 
-    let headers = new Headers({'Content-Type': 'application/json'});
+    let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers }); 
-    
-    return this.http.post(`http://localhost:5000/api/sellers/${id}/products`, newProduct)
+
+    return this.http.post(`http://localhost:5000/api/sellers/${id}/products`, { newProduct }, options)
     .map(response => {
       console.log(response);
-      return <Product> response.json();
+      return response.json();
+    })
+    .catch(err => {
+      console.log(err);
+      return Observable.throw(err.json().error);
     });
   }
 
