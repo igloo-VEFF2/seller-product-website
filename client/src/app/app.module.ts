@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrModule } from 'ngx-toastr';
+import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { SellersService } from './sellers.service';
@@ -27,6 +29,8 @@ import { ProductDlgComponent } from './product-dlg/product-dlg.component';
     BrowserModule,
     FormsModule,
     HttpModule,
+    CommonModule,
+    ToastrModule.forRoot(),
     NgbModule.forRoot(),
     RouterModule.forRoot([{
       path: '',
@@ -44,4 +48,5 @@ import { ProductDlgComponent } from './product-dlg/product-dlg.component';
   bootstrap: [AppComponent],
   entryComponents: [SellerDlgComponent, ProductDlgComponent]
 })
+
 export class AppModule { }
