@@ -27,10 +27,11 @@ export class SellerComponent implements OnInit {
   private productList: Product[];
   private topTen: Product[];
   private product: Product;
+  private isEmpty: boolean;
 
   ngOnInit() {
     this.sellerID = this.route.snapshot.params['id'];
-    let isEmpty = false;
+    this.isEmpty = false;
 
     this.service.getSellerById(this.sellerID).subscribe(info => {
       this.name = info.name;
@@ -40,7 +41,7 @@ export class SellerComponent implements OnInit {
 
     this.service.getProductsBySellerId(this.sellerID).subscribe(products => {
       if (products.length === 0) {
-        isEmpty = true;
+        this.isEmpty = true;
       }
       else {
         this.productList = products;
