@@ -21,6 +21,7 @@ export class ProductDlgComponent implements OnInit {
   constructor(public activeModal: NgbActiveModal) { }
 
   product: Product;
+  title: string;
 
   /*constructor(public activeModal: NgbActiveModal,
     private product: Product) { }*/
