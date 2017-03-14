@@ -14,36 +14,25 @@
 
 <button (click)="addNewProduct()">Add new product</button>
 
-<!-- Tab/pill navigation -->
-<ul class="nav nav-pills">
-  <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#allproducts" role="tab">All products</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#top10" role="tab">Top 10 products</a>
-  </li>
-</ul>
+<ngb-tabset type="pills">
+  <ngb-tab title="All Products">
+    <template ngbTabContent>
+      <ngb-alert [dismissible]="false" *ngIf="isEmpty">
+        Seller has no products yet
+      </ngb-alert>
 
-<!-- Tab content -->
-<div class="tab-content">
-  <div class="tab-pane fade in active" id="allproducts" role="tabpanel">
-    <ngb-alert [dismissible]="false" *ngIf="isEmpty">
-      Seller has no products yet
-    </ngb-alert>
-
-    <ul *ngIf="!isEmpty">
-      <li *ngFor="let product of productList" (click)="editProduct(product)">
-        {{product.name}}
-      </li>
-    </ul>
-  </div>
-  <div class="tab-pane fade" id="top10" role="tabpanel">
-   <p>test</p>
-  </div>
-</div>
-
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12 col-md-3 col-lg-2">
-  </div>
-</div>
+      <div class="container" *ngIf="!isEmpty">
+        <div class="row">
+          <div class="col-sm-12 col-md-3 col-lg-2"*ngFor="let product of productList" (click)="editProduct(product)">
+            {{product.name}}
+          </div>
+        </div>
+      </div>
+    </template>
+  </ngb-tab>
+  <ngb-tab title="Top 10">
+    <template ngbTabContent>
+      Top 10 products!
+    </template>
+  </ngb-tab>
+</ngb-tabset>
