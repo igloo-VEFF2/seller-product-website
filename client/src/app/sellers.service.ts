@@ -127,10 +127,13 @@ export class SellersService {
   }
 
   updateProductDetails(sellerID: number, productID: number, updatedProduct: Product): Observable<Product> {
+    console.log(sellerID);
+    console.log(productID);
+    console.log(updatedProduct);
     let headers = new Headers({'Content-Type': 'application/json'});
     let options = new RequestOptions({ headers: headers });
 
-    return this.http.put(`/api/sellers/${sellerID}/products/${productID}`, updatedProduct, options)
+    return this.http.put(`/api/sellers/${sellerID}/products/${productID}`, JSON.stringify(updatedProduct), options)
     .map(response => {
       console.log(response);
       return response.json();
