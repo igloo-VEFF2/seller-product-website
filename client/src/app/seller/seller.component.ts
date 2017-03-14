@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SellerDlgComponent } from '../seller-dlg/seller-dlg.component';
 import { ProductDlgComponent } from '../product-dlg/product-dlg.component';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-seller',
@@ -46,10 +47,10 @@ export class SellerComponent implements OnInit {
     });
   }
 
-  /*ngOnChanges() {
-    name;
+  ngOnChanges() {
+    this.service.getSellerById(this.sellerID);
     console.log('something changed');
-  }*/
+  }
 
   editSellerInfo() {
     console.log('editing seller');
@@ -65,7 +66,11 @@ export class SellerComponent implements OnInit {
     editSellerInstance.result.then(obj => {
       console.log(obj.id);
       console.log(obj);
-      this.service.updateSellerDetails(this.sellerID, obj);
+      this.service.updateSellerDetails(this.sellerID, obj).subscribe(result => {
+        this.name = result.name;
+        this.category = result.category;
+        this.imagePath = result.imagePath;
+      });
     })
     .catch(err => {
       console.log(err);
