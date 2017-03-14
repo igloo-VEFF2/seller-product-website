@@ -46,9 +46,17 @@ export class SellerComponent implements OnInit {
       }
       else {
         this.productList = products;
-        console.log(products.length);
-        console.log(this.productList.length);
-        //this.topTen = products.sort()
+        //console.log(products.length);
+        //console.log(this.productList.length);
+        let sortedProducts = products;
+        this.topTen = sortedProducts.sort((p1, p2) => {
+            //let total1 = p1.price*p1.quantitySold;
+            //let total2 = p2.price*p2.quantitySold;
+            return p1.price*p1.quantitySold < p2.price*p2.quantitySold ? -1 : (
+              p1.price*p1.quantitySold > p2.price*p2.quantitySold ? 1 : 0
+            );
+        })
+        .slice(0, 10);
       }
     });
   }
@@ -77,8 +85,8 @@ export class SellerComponent implements OnInit {
     };
 
     editSellerInstance.result.then(obj => {
-      console.log(obj.id);
-      console.log(obj);
+      //console.log(obj.id);
+      //console.log(obj);
       this.toastrService.success('Individuals info updated successfully!', 'Success!');
       this.service.updateSellerDetails(this.sellerID, obj).subscribe(result => {
         this.name = result.name;
@@ -107,13 +115,13 @@ export class SellerComponent implements OnInit {
     newProductInstance.componentInstance.notEditing = true;
 
     newProductInstance.result.then(obj => {
-      console.log(obj);
+      //console.log(obj);
       this.toastrService.success('New product has been successfully added!', 'Success!');
       this.service.addNewProduct(this.sellerID, obj).subscribe(result => {
         this.product = result;
         this.service.getProductsBySellerId(this.sellerID).subscribe(result => {
           this.productList = result;
-          console.log(result.length);
+          //console.log(result.length);
         });
       });
     })
@@ -141,7 +149,7 @@ export class SellerComponent implements OnInit {
 
     editProductInstance.result.then(obj => {
       this.toastrService.success('Product info updated successfully!', 'Success!');
-      console.log(obj);
+      //console.log(obj);
       this.service.updateProductDetails(this.sellerID, currentProduct.id, obj).subscribe(result => {
         this.service.getProductsBySellerId(this.sellerID).subscribe(result => {
           this.productList = result;
