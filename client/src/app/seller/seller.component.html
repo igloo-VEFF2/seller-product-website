@@ -1,3 +1,5 @@
+<template ngbModalContainer></template>
+
 <div>
   <img id="image" src="{{imagePath}}">
 </div>
@@ -9,6 +11,7 @@
 </div>
 
 <button (click)="editSellerInfo()">Edit info</button>
+
 <button (click)="addNewProduct()">Add new product</button>
 
 <ul *ngIf="isEmpty">
@@ -16,7 +19,7 @@
 </ul>
 
 <ul *ngIf="!isEmpty">
-  <li *ngFor="let product of productList">
-    {{product.name}}
+  <li *ngFor="let product of productList" (click)="editProduct()">
+    {{product}}
   </li>
 </ul>
