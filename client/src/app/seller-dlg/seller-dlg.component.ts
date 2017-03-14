@@ -25,6 +25,7 @@ export class SellerDlgComponent implements OnInit {
   }
 
   onCancel() {
+    this.toastrService.error("Operation canceled!", "Canceled!");
     this.activeModal.dismiss();
   }
 

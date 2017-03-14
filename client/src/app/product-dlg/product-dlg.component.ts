@@ -28,6 +28,7 @@ export class ProductDlgComponent implements OnInit {
   }
   
   onCancel() {
+    this.toastrService.error("Operation canceled!", "Canceled!");
     this.activeModal.dismiss();
   }
 
