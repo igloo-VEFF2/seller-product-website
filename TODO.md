@@ -68,5 +68,7 @@ Klára að setja upp allar prófanir og fara yfir útlit
 - kláraði addProduct
 - lét allar upplýsingar uppfærast strax um leið og búið er að bæta við eða edita
 - kláraði editProduct
+- búinn að setja upp ngb-alert ef seller er ekki með neinar vörur
+- setti upp tabs en vantar að geta sýnt content-ið inn í þeim
 
 ##### Niðurstaða dagsins
