@@ -47,14 +47,16 @@ export class SellerComponent implements OnInit {
     });
   }
 
-  ngOnChanges() {
+  /*ngOnChanges() {
     this.service.getSellerById(this.sellerID);
     console.log('something changed');
-  }
+  }*/
 
   editSellerInfo() {
     console.log('editing seller');
     let editSellerInstance = this.modalService.open(SellerDlgComponent);
+
+    editSellerInstance.componentInstance.title = "Edit Seller Info";
 
     editSellerInstance.componentInstance.seller = {
       id: this.sellerID,
@@ -84,6 +86,8 @@ export class SellerComponent implements OnInit {
 
     newProductInstance.componentInstance.product = { };
 
+    newProductInstance.componentInstance.title = "Adding new product";
+
     newProductInstance.result.then(obj => {
       console.log(obj);
       this.service.addNewProduct(this.sellerID, obj);
@@ -101,6 +105,8 @@ export class SellerComponent implements OnInit {
     console.log(this.product);
 
     let editProductInstance = this.modalService.open(ProductDlgComponent);
+
+    editProductInstance.componentInstance.title = "Editing product";
 
     editProductInstance.componentInstance.product = {
       name: this.product.name,
