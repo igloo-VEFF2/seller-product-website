@@ -15,6 +15,7 @@ export class Seller {
 export class SellerDlgComponent implements OnInit {
 
   seller: Seller;
+  title: string;
 
   constructor(public activeModal: NgbActiveModal) { }
 
