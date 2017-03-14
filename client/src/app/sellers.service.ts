@@ -58,7 +58,7 @@ export class SellersService {
   addNewSeller(newSeller: Object) {
     console.log(newSeller);
     let headers = new Headers({'Content-Type': 'application/json'});
-    let options = new RequestOptions({ headers: headers});
+    let options = new RequestOptions({ headers: headers });
 
     this.http.post('http://localhost:5000/api/sellers', newSeller, options)
     .map(response => {
@@ -77,6 +77,10 @@ export class SellersService {
   addNewProduct(id: number, newProduct: Product): Observable<Product> {
     console.log(id);
     console.log(newProduct);
+
+    let headers = new Headers({'Content-Type': 'application/json'});
+    let options = new RequestOptions({ headers: headers }); 
+    
     return this.http.post(`http://localhost:5000/api/sellers/${id}/products`, newProduct)
     .map(response => {
       console.log(response);
@@ -84,7 +88,7 @@ export class SellersService {
     });
   }
 
-  updateSellerDetails(id: number, updatedSeller: Object) {
+  /*updateSellerDetails(id: number, updatedSeller: Object) {
     console.log(id);
     console.log(updatedSeller);
     let headers = new Headers({'Content-Type': 'application/json'});
@@ -100,6 +104,23 @@ export class SellersService {
       return Observable.throw(err.json().error);
     })
     .subscribe();
+  }*/
+
+    updateSellerDetails(id: number, updatedSeller: Object): Observable<Seller> {
+    console.log(id);
+    console.log(updatedSeller);
+    let headers = new Headers({'Content-Type': 'application/json'});
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.put(`http://localhost:5000/api/sellers/${id}`, JSON.stringify(updatedSeller), options)
+    .map(response => {
+      console.log(response);
+      return response.json();
+    })
+    .catch(err => {
+      console.log(err);
+      return Observable.throw(err.json().error);
+    });
   }
 
   updateProductDetails(sellerID: number, productID: number, updatedProduct: Product): Observable<Product> {
