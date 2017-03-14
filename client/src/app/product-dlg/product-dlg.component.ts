@@ -1,15 +1,13 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { Product } from '../sellers.service'; //gave warnings about not finding Product in sellers.service
+//import { Product } from '../sellers.service'; //gave warnings about not finding Product in sellers.service
 
-/*export class Product {
-  id: number;
+export class Product {
   name: string;
   price: number;
-  quantitySold: number;
   quantityInStock: number;
   imagePath: string;
-}*/
+}
 
 @Component({
   selector: 'app-product-dlg',
@@ -22,7 +20,7 @@ export class ProductDlgComponent implements OnInit {
 
   product: Product;
   title: string;
-  editing: boolean;
+  notEditing: boolean;
 
   /*constructor(public activeModal: NgbActiveModal,
     private product: Product) { }*/

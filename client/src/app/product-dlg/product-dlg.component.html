@@ -7,7 +7,7 @@
 <div class="modal-body">
   Name: <input [(ngModel)]="product.name" autofocus /> <br>
   Price: <input [(ngModel)]="product.price" /> <br>
-  <div *ngIf="!editing">Stock: <input [(ngModel)]="product.quantityInStock" /> <br></div>
+  <div *ngIf="notEditing">Stock: <input [(ngModel)]="product.quantityInStock" /> <br></div>
   Image: <input [(ngModel)]="product.imagePath" />
 </div>
 <div class="modal-footer">
