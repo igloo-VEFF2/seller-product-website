@@ -19,7 +19,7 @@
 ####2017-03-10
 Skype samtal eftir klukkan 20:00
 
-#####@Maciuska
+#####[@Maciuska]
 - Er að vinna frá 10:00 - 19:30
 
 #####@Spekingur
