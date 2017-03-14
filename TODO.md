@@ -41,6 +41,7 @@ Skype samtal eftir klukkan 20:00
 
 ####2017-03-13
 Uppsetning á öllum síðum, fá virknina í gang
+
 #####@Maciuska
 
 #####@Spekingur
@@ -51,14 +52,17 @@ Vantar einnig að laga editProduct í sellerComponent
 
 ####2017-03-14
 Klára að setja upp allar prófanir og fara yfir útlit
+
 #####@Maciuska
 - [ ] setja upp toastr feedback fyrir add og edit
 - [ ] setja upp validation fyrir allt input
+
 ######Gert í dag
 
 #####@Spekingur
 - [ ] Klára addProduct í sellerService og sellerComponent
 - [ ] Klára editProduct í sellerService og sellerComponent
+
 ######Gert í dag
 - lagaði þannig að öll föll í service sem tala við server sé observable og virka
 - kláraði addproduct
