@@ -29,9 +29,7 @@ export class SellerListComponent implements OnInit {
     modalInstance.componentInstance.title = "Adding new seller";
     modalInstance.componentInstance.seller = { };
     modalInstance.result.then(obj => {
-      console.log("Dialog was closed using OK");
-      console.log(obj);
-      this.showSuccess();
+      this.toastrService.success('Seller succesfully added!', 'Success!');
       this.service.addNewSeller(obj).subscribe(result => {
         //this.seller = result;
         this.service.getSellers().subscribe(result => {
@@ -40,17 +38,8 @@ export class SellerListComponent implements OnInit {
       });
     })
     .catch(err => {
-      this.showFailure();
-      console.log("Dialog was cancelled");
+      this.toastrService.error('There was an error while adding a new individual!', 'Failure!');
       console.log(err);
     });
   }
-
-  showSuccess() {
-    this.toastrService.success('Seller succesfully added!', 'Success!');
-  }
-  showFailure() {
-    this.toastrService.error('There was an error while adding a new individual!', 'Failure!');
-  }
-
 }

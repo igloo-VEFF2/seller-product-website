@@ -5,6 +5,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SellerDlgComponent } from '../seller-dlg/seller-dlg.component';
 import { ProductDlgComponent } from '../product-dlg/product-dlg.component';
 import { Observable } from 'rxjs/Observable';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-seller',
@@ -16,7 +17,8 @@ export class SellerComponent implements OnInit {
   constructor(private router: Router,
     private route: ActivatedRoute,
     private service: SellersService,
-    private modalService: NgbModal) { }
+    private modalService: NgbModal,
+    private toastrService: ToastrService) { }
 
   private sellerID: number;
   private name: string;
@@ -75,6 +77,7 @@ export class SellerComponent implements OnInit {
     editSellerInstance.result.then(obj => {
       console.log(obj.id);
       console.log(obj);
+      this.toastrService.success('Individuals info updated successfully!', 'Success!');
       this.service.updateSellerDetails(this.sellerID, obj).subscribe(result => {
         this.name = result.name;
         this.category = result.category;
@@ -83,6 +86,7 @@ export class SellerComponent implements OnInit {
     })
     .catch(err => {
       console.log(err);
+      this.toastrService.error('There was an error while updating individuals info!', 'Failure!');
     });
 
   }
@@ -98,6 +102,7 @@ export class SellerComponent implements OnInit {
 
     newProductInstance.result.then(obj => {
       console.log(obj);
+      this.toastrService.success('New product has been successfully added!', 'Success!');
       this.service.addNewProduct(this.sellerID, obj).subscribe(result => {
         this.product = result;
         this.service.getProductsBySellerId(this.sellerID).subscribe(result => {
@@ -108,6 +113,7 @@ export class SellerComponent implements OnInit {
     })
     .catch(err => {
       console.log(err);
+      this.toastrService.error('There was an error while trying to add a new product!', 'Failure!');
     });
   }
 
@@ -132,11 +138,13 @@ export class SellerComponent implements OnInit {
     };
 
     editProductInstance.result.then(obj => {
+      this.toastrService.success('Product info updated successfully!', 'Success!');
       console.log(obj);
       this.service.updateProductDetails(this.sellerID, this.product.id, obj);
     })
     .catch(err => {
       console.log(err);
+      this.toastrService.error('There was an error while trying to update a product!', 'Failure!');
     })
   }
 }
