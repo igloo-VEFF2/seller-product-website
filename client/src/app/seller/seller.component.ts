@@ -96,7 +96,6 @@ export class SellerComponent implements OnInit {
     })
     .catch(err => {
       console.log(err);
-      this.toastrService.error('There was an error while updating individuals info!', 'Failure!');
     });
 
   }
@@ -127,7 +126,6 @@ export class SellerComponent implements OnInit {
     })
     .catch(err => {
       console.log(err);
-      this.toastrService.error('There was an error while trying to add a new product!', 'Failure!');
     });
   }
 
@@ -158,7 +156,6 @@ export class SellerComponent implements OnInit {
     })
     .catch(err => {
       console.log(err);
-      this.toastrService.error('There was an error while trying to update a product!', 'Failure!');
     });
   }
 }
