@@ -133,7 +133,7 @@ export class SellersService {
     let headers = new Headers({'Content-Type': 'application/json'});
     let options = new RequestOptions({ headers: headers });
 
-    return this.http.put(`/api/sellers/${sellerID}/products/${productID}`, JSON.stringify(updatedProduct), options)
+    return this.http.put(`http://localhost:5000/api/sellers/${sellerID}/products/${productID}`, updatedProduct, options)
     .map(response => {
       console.log(response);
       return response.json();
