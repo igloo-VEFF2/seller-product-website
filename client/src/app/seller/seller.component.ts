@@ -98,7 +98,7 @@ export class SellerComponent implements OnInit {
     newProductInstance.componentInstance.product = { };
 
     newProductInstance.componentInstance.title = 'Adding new product';
-    newProductInstance.componentInstance.editing = false;
+    newProductInstance.componentInstance.notEditing = true;
 
     newProductInstance.result.then(obj => {
       console.log(obj);
@@ -120,27 +120,35 @@ export class SellerComponent implements OnInit {
   editProduct() {
     console.log('editing product');
 
-    this.product = this.route.snapshot.params['id'];
+    let prodId = this.route.snapshot.params['product.prodId'];
+    console.log(prodId);
 
     console.log(this.product);
 
     let editProductInstance = this.modalService.open(ProductDlgComponent);
 
     editProductInstance.componentInstance.title = 'Editing product';
-    editProductInstance.componentInstance.editing = true;
+    editProductInstance.componentInstance.notEditing = false;
 
-    editProductInstance.componentInstance.product = {
+    editProductInstance.componentInstance.sendProduct = {
+      id: this.sellerID,
+      prodId: this.product.id,
       name: this.product.name,
       price: this.product.price,
-      quantitySold: this.product.quantitySold,
-      quantityInStock: this.product.quantityInStock,
       imagePath: this.product.imagePath
     };
+
+    console.log(editProductInstance.componentInstance.product);
+
 
     editProductInstance.result.then(obj => {
       this.toastrService.success('Product info updated successfully!', 'Success!');
       console.log(obj);
-      this.service.updateProductDetails(this.sellerID, this.product.id, obj);
+      this.service.updateProductDetails(this.sellerID, this.product.id, obj).subscribe(result => {
+        this.product.name = result.name;
+        this.product.price = result.price;
+        this.product.imagePath = result.imagePath;
+      });
     })
     .catch(err => {
       console.log(err);
