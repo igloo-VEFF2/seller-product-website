@@ -95,7 +95,11 @@ export class SellerComponent implements OnInit {
     console.log('adding new product');
     let newProductInstance = this.modalService.open(ProductDlgComponent);
 
-    newProductInstance.componentInstance.product = { };
+    newProductInstance.componentInstance.product = { 
+      name: "",
+      price: 0,
+      quantityInStock: 0
+    };
 
     newProductInstance.componentInstance.title = 'Adding new product';
     newProductInstance.componentInstance.notEditing = true;
