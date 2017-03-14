@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChange } from '@angular/core';
 import { SellersService, Seller, Product } from '../sellers.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -49,16 +49,21 @@ export class SellerComponent implements OnInit {
     });
   }
 
-  /*ngOnChanges() {
-    this.service.getSellerById(this.sellerID);
-    console.log('something changed');
+  /*ngOnChanges(changes: SimpleChange) {
+    console.log('changes called');
+    if (this.productList != changes.currentValue) {
+      console.log('changing');
+      this.service.getProductsBySellerId(this.sellerID);
+    }
   }*/
+    /*this.service.getSellerById(this.sellerID);
+    console.log('something changed');*/
 
   editSellerInfo() {
     console.log('editing seller');
     let editSellerInstance = this.modalService.open(SellerDlgComponent);
 
-    editSellerInstance.componentInstance.title = "Edit Seller Info";
+    editSellerInstance.componentInstance.title = 'Edit Seller Info';
 
     editSellerInstance.componentInstance.seller = {
       id: this.sellerID,
@@ -88,13 +93,17 @@ export class SellerComponent implements OnInit {
 
     newProductInstance.componentInstance.product = { };
 
-    newProductInstance.componentInstance.title = "Adding new product";
+    newProductInstance.componentInstance.title = 'Adding new product';
 
     newProductInstance.result.then(obj => {
       console.log(obj);
       this.service.addNewProduct(this.sellerID, obj).subscribe(result => {
         this.product = result;
-      })
+        this.service.getProductsBySellerId(this.sellerID).subscribe(result => {
+          this.productList = result;
+          console.log(result.length);
+        });
+      });
     })
     .catch(err => {
       console.log(err);
@@ -110,7 +119,7 @@ export class SellerComponent implements OnInit {
 
     let editProductInstance = this.modalService.open(ProductDlgComponent);
 
-    editProductInstance.componentInstance.title = "Editing product";
+    editProductInstance.componentInstance.title = 'Editing product';
 
     editProductInstance.componentInstance.product = {
       name: this.product.name,
