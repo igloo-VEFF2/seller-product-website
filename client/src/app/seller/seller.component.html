@@ -32,6 +32,8 @@
                   <ul class="list-group list-group-flush">
                     <li class="list-group-item">Price: {{product.price}}</li>
                     <li class="list-group-item">Stock: {{product.quantityInStock}}</li>
+                    <li class="list-group-item">Sold: {{product.quantitySold}}</li>
+                    <li class="list-group-item">Revenue: {{product.price*product.quantitySold}}</li>
                   </ul>
                 </div>
               </div>
@@ -43,7 +45,30 @@
   </ngb-tab>
   <ngb-tab title="Top 10">
     <template ngbTabContent>
-      Top 10 products!
+      <ngb-alert [dismissible]="false" *ngIf="isEmpty">
+        Seller has no top 10 products
+      </ngb-alert>
+
+      <div class="container" *ngIf="!isEmpty">
+        <div class="row">
+          <div class="col-sm-12 col-md-3 col-lg-2"*ngFor="let product of topTen" (click)="editProduct(product)">
+            <div class="card-group">
+              <div class="card" style="width: 12rem;">
+                <img class="card-img-top" src="{{product.imagePath}}" alt="Missing image">
+                <div class="card-block">
+                  <h6 class="card-title">{{product.name}}</h6>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Price: {{product.price}}</li>
+                    <li class="list-group-item">Stock: {{product.quantityInStock}}</li>
+                    <li class="list-group-item">Sold: {{product.quantitySold}}</li>
+                    <li class="list-group-item">Revenue: {{product.price*product.quantitySold}}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </template>
   </ngb-tab>
 </ngb-tabset>
