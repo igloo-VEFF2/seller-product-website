@@ -55,12 +55,12 @@ export class SellersService {
 
   //TODO: check if these functions do the correct thing
   //console.log checks added to see data
-  addNewSeller(newSeller: Object) {
+  addNewSeller(newSeller: Object): Observable<Seller> {
     console.log(newSeller);
     let headers = new Headers({'Content-Type': 'application/json'});
     let options = new RequestOptions({ headers: headers });
 
-    this.http.post('http://localhost:5000/api/sellers', newSeller, options)
+    return this.http.post('http://localhost:5000/api/sellers', newSeller, options)
     .map(response => {
       console.log(response);
       console.log("Seller added!");
@@ -70,8 +70,7 @@ export class SellersService {
     .catch(err => {
       console.log(err);
       return Observable.throw(err.json().error || 'Server error');
-    })
-    .subscribe();
+    });
   }
   
   addNewProduct(id: number, newProduct: Product): Observable<Product> {
@@ -81,7 +80,7 @@ export class SellersService {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers }); 
 
-    return this.http.post(`http://localhost:5000/api/sellers/${id}/products`, { newProduct }, options)
+    return this.http.post(`http://localhost:5000/api/sellers/${id}/products`, newProduct, options)
     .map(response => {
       console.log(response);
       return response.json();
@@ -128,9 +127,17 @@ export class SellersService {
   }
 
   updateProductDetails(sellerID: number, productID: number, updatedProduct: Product): Observable<Product> {
-    return this.http.put(`/api/sellers/${sellerID}/products/${productID}`, updatedProduct)
+    let headers = new Headers({'Content-Type': 'application/json'});
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.put(`/api/sellers/${sellerID}/products/${productID}`, updatedProduct, options)
     .map(response => {
-      return <Product> response.json();
+      console.log(response);
+      return response.json();
+    })
+    .catch(err => {
+      console.log(err);
+      return Observable.throw(err.json().error);
     });
   }
 }
