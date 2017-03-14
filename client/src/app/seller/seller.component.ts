@@ -6,6 +6,7 @@ import { SellerDlgComponent } from '../seller-dlg/seller-dlg.component';
 import { ProductDlgComponent } from '../product-dlg/product-dlg.component';
 import { Observable } from 'rxjs/Observable';
 import { ToastrService } from 'ngx-toastr';
+//import { ProductComponent } from '../product/product.component';
 
 @Component({
   selector: 'app-seller',
