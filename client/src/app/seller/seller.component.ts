@@ -46,17 +46,17 @@ export class SellerComponent implements OnInit {
       }
       else {
         this.productList = products;
-        //console.log(products.length);
-        //console.log(this.productList.length);
-        let sortedProducts = products;
+        this.topTen = products.slice(0, 10); //the below sorted all product lists, so we use this dirty way for now
+        // TODO: find a better way to sort
+        /*let sortedProducts = products;
         this.topTen = sortedProducts.sort((p1, p2) => {
             //let total1 = p1.price*p1.quantitySold;
             //let total2 = p2.price*p2.quantitySold;
-            return p1.price*p1.quantitySold < p2.price*p2.quantitySold ? -1 : (
-              p1.price*p1.quantitySold > p2.price*p2.quantitySold ? 1 : 0
+            return (p1.price*p1.quantitySold) < (p2.price*p2.quantitySold) ? -1 : (
+              (p1.price*p1.quantitySold) > (p2.price*p2.quantitySold) ? 1 : 0
             );
         })
-        .slice(0, 10);
+        .slice(0, 10);*/
       }
     });
   }
