@@ -1,74 +1,75 @@
 <template ngbModalContainer></template>
 
-<div>
-  <img id="image" src="{{imagePath}}">
-</div>
-<div>
-  {{name}}
-</div>
-<div>
-  {{category}}
-</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <img id="image" src="{{imagePath}}">
+      <h4>{{name}}</h4>
+      <span class="badge badge-pill badge-default">{{category}}</span>
+    </div>
+    <div class="col-md-6">
+        <button class="btn btn-primary" (click)="editSellerInfo()">Edit info</button>
+        <button class="btn btn-primary" (click)="addNewProduct()">Add new product</button>
+    </div>
+  </div>
+  <div class="row">
+    <ngb-tabset type="pills">
+      <ngb-tab title="All Products">
+        <template ngbTabContent>
+          <ngb-alert [dismissible]="false" *ngIf="isEmpty">
+            Seller has no products yet
+          </ngb-alert>
 
-<button (click)="editSellerInfo()">Edit info</button>
-
-<button (click)="addNewProduct()">Add new product</button>
-
-<ngb-tabset type="pills">
-  <ngb-tab title="All Products">
-    <template ngbTabContent>
-      <ngb-alert [dismissible]="false" *ngIf="isEmpty">
-        Seller has no products yet
-      </ngb-alert>
-
-      <div class="container" *ngIf="!isEmpty">
-        <div class="row">
-          <div class="col-sm-12 col-md-3 col-lg-2"*ngFor="let product of productList" (click)="editProduct(product)">
-            <div class="card-group">
-              <div class="card" style="width: 12rem;">
-                <img class="card-img-top" src="{{product.imagePath}}" alt="Missing image">
-                <div class="card-block">
-                  <h6 class="card-title">{{product.name}}</h6>
-                  <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Price: {{product.price}}</li>
-                    <li class="list-group-item">Stock: {{product.quantityInStock}}</li>
-                    <li class="list-group-item">Sold: {{product.quantitySold}}</li>
-                    <li class="list-group-item">Revenue: {{product.price*product.quantitySold}}</li>
-                  </ul>
+          <div class="container" *ngIf="!isEmpty">
+            <div class="row">
+              <div class="col-sm-12 col-md-3 col-lg-2"*ngFor="let product of productList" (click)="editProduct(product)">
+                <div class="card-group">
+                  <div class="card" style="width: 12rem;">
+                    <img class="card-img-top" src="{{product.imagePath}}" alt="Missing image">
+                    <div class="card-block">
+                      <h6 class="card-title">{{product.name}}</h6>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Price: {{product.price}}</li>
+                        <li class="list-group-item">Stock: {{product.quantityInStock}}</li>
+                        <li class="list-group-item">Sold: {{product.quantitySold}}</li>
+                        <li class="list-group-item">Revenue: {{product.price*product.quantitySold}}</li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </template>
-  </ngb-tab>
-  <ngb-tab title="Top 10">
-    <template ngbTabContent>
-      <ngb-alert [dismissible]="false" *ngIf="isEmpty">
-        Seller has no top 10 products
-      </ngb-alert>
+        </template>
+      </ngb-tab>
+      <ngb-tab title="Top 10">
+        <template ngbTabContent>
+          <ngb-alert [dismissible]="false" *ngIf="isEmpty">
+            Seller has no top 10 products
+          </ngb-alert>
 
-      <div class="container" *ngIf="!isEmpty">
-        <div class="row">
-          <div class="col-sm-12 col-md-3 col-lg-2"*ngFor="let product of topTen" (click)="editProduct(product)">
-            <div class="card-group">
-              <div class="card" style="width: 12rem;">
-                <img class="card-img-top" src="{{product.imagePath}}" alt="Missing image">
-                <div class="card-block">
-                  <h6 class="card-title">{{product.name}}</h6>
-                  <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Price: {{product.price}}</li>
-                    <li class="list-group-item">Stock: {{product.quantityInStock}}</li>
-                    <li class="list-group-item">Sold: {{product.quantitySold}}</li>
-                    <li class="list-group-item">Revenue: {{product.price*product.quantitySold}}</li>
-                  </ul>
+          <div class="container" *ngIf="!isEmpty">
+            <div class="row">
+              <div class="col-sm-12 col-md-3 col-lg-2"*ngFor="let product of topTen" (click)="editProduct(product)">
+                <div class="card-group">
+                  <div class="card" style="width: 12rem;">
+                    <img class="card-img-top" src="{{product.imagePath}}" alt="Missing image">
+                    <div class="card-block">
+                      <h6 class="card-title">{{product.name}}</h6>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Price: {{product.price}}</li>
+                        <li class="list-group-item">Stock: {{product.quantityInStock}}</li>
+                        <li class="list-group-item">Sold: {{product.quantitySold}}</li>
+                        <li class="list-group-item">Revenue: {{product.price*product.quantitySold}}</li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </template>
-  </ngb-tab>
-</ngb-tabset>
+        </template>
+      </ngb-tab>
+    </ngb-tabset>
+  </div>
+</div>
