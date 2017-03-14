@@ -25,4 +25,17 @@ describe('SellerListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  
+  describe('should succesfully', () =>{
+    it('get a list of sellers on load up');
+    it('open a modal window to add a new seller');
+  });
+
+  describe('should give error messages when', () => {
+    it(`server isn't up`);
+    it(`seller list is empty`);
+    it(`modal window doesn't open`);
+    it(`creating a new seller is unsuccessful`);
+  });
+
 });
