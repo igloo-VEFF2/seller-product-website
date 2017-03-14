@@ -69,7 +69,7 @@ export class SellersService {
     })
     .catch(err => {
       console.log(err);
-      return Observable.throw(err.json().error || 'Server error')
+      return Observable.throw(err.json().error || 'Server error');
     })
     .subscribe();
   }
@@ -84,11 +84,22 @@ export class SellersService {
     });
   }
 
-  updateSellerDetails(id: number, updatedSeller: Seller): Observable<Seller> {
-    return this.http.put(`http://localhost:5000/api/sellers/${id}`, updatedSeller)
+  updateSellerDetails(id: number, updatedSeller: Object) {
+    console.log(id);
+    console.log(updatedSeller);
+    let headers = new Headers({'Content-Type': 'application/json'});
+    let options = new RequestOptions({ headers: headers });
+
+    this.http.put(`http://localhost:5000/api/sellers/${id}`, updatedSeller, options)
     .map(response => {
-      return <Seller> response.json();
-    });
+      console.log(response);
+      return response.json();
+    })
+    .catch(err => {
+      console.log(err);
+      return Observable.throw(err.json().error);
+    })
+    .subscribe();
   }
 
   updateProductDetails(sellerID: number, productID: number, updatedProduct: Product): Observable<Product> {
