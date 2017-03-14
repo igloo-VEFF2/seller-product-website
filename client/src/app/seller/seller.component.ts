@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { SellersService, Seller, Product } from '../sellers.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -46,6 +46,11 @@ export class SellerComponent implements OnInit {
     });
   }
 
+  /*ngOnChanges() {
+    name;
+    console.log('something changed');
+  }*/
+
   editSellerInfo() {
     console.log('editing seller');
     let editSellerInstance = this.modalService.open(SellerDlgComponent);
@@ -58,6 +63,7 @@ export class SellerComponent implements OnInit {
     };
 
     editSellerInstance.result.then(obj => {
+      console.log(obj.id);
       console.log(obj);
       this.service.updateSellerDetails(this.sellerID, obj);
     })
